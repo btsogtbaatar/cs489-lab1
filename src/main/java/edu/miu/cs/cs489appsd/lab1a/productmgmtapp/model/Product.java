@@ -81,14 +81,14 @@ public class Product {
 
     public String xml() {
         return String.format(
-                "\t<product productId=\"%s\" name=\"%s\" dateSupplied=\"%s\" quantityInStock=\"%s\" unitPrice=\"%s\"/>\n",
+                "\t<product productId=\"%s\" name=\"%s\" dateSupplied=\"%s\" quantityInStock=\"%s\" unitPrice=\"%s\"/>%n",
                 getProductId(), getName(), getDateSuppliedFormatted(), getQuantityInStock(), getUnitPrice());
 
     }
 
     public String csv() {
         return String.format(
-                "%s, %s, %s, %s, %s\n",
+                "%s, %s, %s, %s, %s%n",
                 getProductId(), getName(), getDateSuppliedFormatted(), getQuantityInStock(), getUnitPrice());
 
     }
