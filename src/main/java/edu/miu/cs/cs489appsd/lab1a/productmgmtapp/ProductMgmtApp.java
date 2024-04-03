@@ -40,20 +40,8 @@ public class ProductMgmtApp {
                 break;
         }
 
-        Stream<Product> productStream = Arrays.stream(products);
-
-        String body = productStream.sorted((product1, product2) -> product1.getName().compareTo(product2.getName()))
-                .map(product -> {
-                    switch (type) {
-                        default:
-                        case JSON:
-                            return product.json();
-                        case XML:
-                            return product.xml();
-                        case CSV:
-                            return product.csv();
-                    }
-                }).collect(Collectors.joining(delimiter));
+        String body = Arrays.stream(products).sorted(Comparator.comparing(Product::getName))
+                .map(product -> product.print(type)).collect(Collectors.joining(delimiter));
 
         String hr = "------------------------------------------------------";
         return String.format("%s%n%s%s%s%n%s", title, header, body, footer, hr);

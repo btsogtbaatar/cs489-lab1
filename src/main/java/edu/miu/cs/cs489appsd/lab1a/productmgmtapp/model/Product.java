@@ -92,4 +92,16 @@ public class Product {
                 getProductId(), getName(), getDateSuppliedFormatted(), getQuantityInStock(), getUnitPrice());
 
     }
+
+    public String print(FormatType type) {
+        switch (type) {
+            default:
+            case JSON:
+                return this.json();
+            case XML:
+                return this.xml();
+            case CSV:
+                return this.csv();
+        }
+    }
 }
